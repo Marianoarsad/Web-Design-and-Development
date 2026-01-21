@@ -1,8 +1,15 @@
 import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+
+// CONFIG
+import connectDB from './config/db.js';
 
 const app = express();
-const port = 3000;
+const PORT = 3000;
+dotenv.config();
 
+app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -21,22 +28,27 @@ app.post("/login", (req, res) => {
 
     if (userName === "Rob" && passWord === "pass123") {
 
-        res.status(200).json({
-            message: "Login Successfully",
-            status: "Success"
-        });
+        res
+            .status(200)
+            .json({
+                message: "Login Successfully",
+                status: "Success"
+            });
 
     } else {
 
-        res.status(403).json({
-            message: "Invalid username or password",
-            status: "failed"
-        });
+        res
+            .status(403)
+            .json({
+                message: "Invalid username or password",
+                status: "failed"
+            });
         
     }
 
 });
 
-app.listen(port, () => {
-    console.log(`server running on port ${port}`);
+app.listen(PORT, () => {
+    connectDB();
+    console.log(`server running on port ${PORT}`);
 })

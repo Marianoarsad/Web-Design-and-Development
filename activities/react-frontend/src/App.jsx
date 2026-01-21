@@ -9,6 +9,8 @@ function App() {
 
     async function handleLogin(e) {
         
+        console.log(e.target)
+
         e.preventDefault();
 
         setFormData({
@@ -24,7 +26,6 @@ function App() {
             body: JSON.stringify(formData)
         });
 
-        console.log(message);
     }
 
   return (
