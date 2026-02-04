@@ -3,6 +3,10 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+import Login from './pages/Login';
+
+import { AuthContextProvider } from './context/AuthContext';
+
 function App() {
 
     const [ formData, setFormData ] = useState();
@@ -29,20 +33,12 @@ function App() {
     }
 
   return (
-    <>
+    <AuthContextProvider>
       <h1>Login page</h1>
       <div>
-            <form onSubmit={handleLogin}>
-                <label for="username">Username</label>
-                <input type='text' name="username"/>
-
-                <label for="password">Password</label>
-                <input name="password" type='password'/>
-
-                <button type='submit'>Login</button>
-            </form>
+            <Login/>
       </div>
-    </>
+    </AuthContextProvider>
   )
 }
 
