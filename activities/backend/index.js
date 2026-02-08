@@ -1,20 +1,23 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-
-// CONFIG
 import connectDB from './config/db.js';
+import authRoutes from './routes/authRoutes.js';
 
 const app = express();
 const PORT = 3000;
 dotenv.config();
 
-app.use(cors());
+app.use(cors({
+    origin: "*",
+    methods: ["GET", "POST"]
+}));
+
 app.use(express.json());
 
+app.use('/api/auth/', authRoutes);
+
 app.get("/", (req, res) => {
-    
-    let name = "Rob";
     
     res
         .status(200)
@@ -26,7 +29,7 @@ app.post("/login", (req, res) => {
     
     var { userName, passWord } = req.body;
 
-    if (userName === "Rob" && passWord === "pass123") {
+    if (userName && passWord ) {
 
         res
             .status(200)

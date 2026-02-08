@@ -41,22 +41,25 @@ export function AuthContextProvider ({ children }) {
     }
 
     const authContext = {
-        user,
-        login,
-        register,
-        logout,
-        loading,
+        user: user,
+        login: login,
+        register: register,
+        logout: logout,
+        loading: loading,
         isAuthenticated: !!user
     };
 
     return <AuthContext.Provider value={authContext}>{children}</AuthContext.Provider>
 }
 
-export const useAuth= () => {
+export const useAuth = () => {
+
     const context = useContext(AuthContext);
+
     if (!context) {
         throw new Error("useAuth must be within auth provider");
     }
+    
 }
 
 export default AuthContext;
