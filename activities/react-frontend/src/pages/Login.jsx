@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import AuthContext from "../context/AuthContext.jsx";
 
 
-export default function Login ({}) {
+export default function Login ({ }) {
     
     const authCtx = useContext(AuthContext);
 

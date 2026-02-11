@@ -49,7 +49,11 @@ export function AuthContextProvider ({ children }) {
         isAuthenticated: !!user
     };
 
-    return <AuthContext.Provider value={authContext}>{children}</AuthContext.Provider>
+    return (
+        <AuthContext.Provider value={authContext}>
+            {children}
+        </AuthContext.Provider>
+    )
 }
 
 export const useAuth = () => {

@@ -1,10 +1,12 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 
-import Login from './pages/Login';
+// COMPONENTS
+import Login from './pages/Login.jsx';
+import Inventory from './pages/Inventory.jsx';
 
+// CONTEXT
 import { AuthContextProvider } from './context/AuthContext';
 
 function App() {
@@ -24,7 +26,7 @@ function App() {
 
         await fetch('http://localhost:3000/login', {
             method: "POST",
-            headers: {
+            headers: {  
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(formData)
@@ -34,10 +36,7 @@ function App() {
 
   return (
     <AuthContextProvider>
-      <h1>Login page</h1>
-      <div>
-            <Login/>
-      </div>
+      <Inventory/>
     </AuthContextProvider>
   )
 }
